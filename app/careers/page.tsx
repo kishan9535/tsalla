@@ -3,6 +3,7 @@ import PageWrapper from "@/components/PageWrapper"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
+import Link from "next/link"
 
 export const metadata: Metadata = {
   title: "Careers - Join the Mission | Tsalla Aerospace",
@@ -39,7 +40,7 @@ const openPositions = [
 export default function CareersPage() {
   return (
     <PageWrapper>
-      <div className="pt-24 pb-16">
+      <div className="pb-16">
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-16">
             <h1 className="text-4xl md:text-6xl font-bold mb-6">Join the Mission</h1>
@@ -51,7 +52,10 @@ export default function CareersPage() {
 
           <div className="grid gap-6 mb-16">
             {openPositions.map((position) => (
-              <Card key={position.id} className="bg-gray-900 border-gray-800">
+              <Card
+                key={position.id}
+                className="bg-gray-900 border-gray-800 card-link hover:border-blue-500 transition-colors"
+              >
                 <CardHeader>
                   <div className="flex justify-between items-start">
                     <div>
@@ -67,7 +71,7 @@ export default function CareersPage() {
                   </div>
                 </CardHeader>
                 <CardContent>
-                  <Button className="bg-blue-600 hover:bg-blue-700">Apply Now</Button>
+                  <Button className="button-link bg-blue-600 hover:bg-blue-700">Apply Now</Button>
                 </CardContent>
               </Card>
             ))}
@@ -76,9 +80,14 @@ export default function CareersPage() {
           <div className="text-center">
             <h2 className="text-2xl font-bold mb-4">Don't see the right role?</h2>
             <p className="text-gray-400 mb-6">We're always looking for exceptional talent. Send us your resume.</p>
-            <Button variant="outline" size="lg">
+            <Button variant="outline" size="lg" className="button-link bg-transparent">
               Send Resume
             </Button>
+            <div className="mt-6">
+              <Link href="/about" className="text-link text-blue-400 hover:text-white">
+                Learn more about our company culture →
+              </Link>
+            </div>
           </div>
         </div>
       </div>
