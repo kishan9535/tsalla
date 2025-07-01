@@ -76,3 +76,12 @@ module.exports = {
   },
   plugins: [require("tailwindcss-animate")],
 }
+module.exports = {
+  theme: {
+    extend: {
+      fontFamily: {
+        farro: ['Farro', 'sans-serif'],
+      },
+    },
+  },
+}
