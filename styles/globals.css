@@ -3,8 +3,8 @@
 @tailwind utilities;
 
 /*---------------------------------------
-  Typography & Reset Enhancements
-----------------------------------------*/
+ * Typography & Reset Enhancements
+ *----------------------------------------*/
 @layer base {
   html {
     scroll-behavior: smooth;
@@ -27,8 +27,8 @@
 }
 
 /*---------------------------------------
-  Custom Component Styles
-----------------------------------------*/
+ * Custom Component Styles
+ *----------------------------------------*/
 @layer components {
   .animated-underline {
     @apply relative inline-block text-white;
@@ -49,5 +49,10 @@
 
   .animated-underline:hover::after {
     transform: scaleX(1);
+  }
+
+  /* New custom class to apply the Orbit font */
+  .font-orbit {
+    font-family: var(--font-orbit, 'Orbit', sans-serif); /* Use the CSS variable, with 'Orbit' and 'sans-serif' as fallbacks */
   }
 }

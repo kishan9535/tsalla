@@ -1,96 +1,107 @@
-import type { Metadata } from "next"
-import PageWrapper from "@/components/PageWrapper"
-import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
-import Link from "next/link"
+"use client";
 
-export const metadata: Metadata = {
-  title: "Careers - Join the Mission | Tsalla Aerospace",
-  description: "Join our team of innovators building the future of autonomous systems and aerospace technology.",
-}
+import Image from "next/image";
+import Link from "next/link";
+import { useEffect } from "react";
 
-const openPositions = [
-  {
-    id: "1",
-    title: "Senior Aerospace Engineer",
-    department: "Engineering",
-    location: "Remote / Austin, TX",
-    type: "Full-time",
-    level: "Senior",
-  },
-  {
-    id: "2",
-    title: "AI/ML Research Scientist",
-    department: "Research",
-    location: "Remote / San Francisco, CA",
-    type: "Full-time",
-    level: "Senior",
-  },
-  {
-    id: "3",
-    title: "Flight Test Engineer",
-    department: "Operations",
-    location: "Nevada Test Site",
-    type: "Full-time",
-    level: "Mid-level",
-  },
-]
+const dummyImages = [
+  "https://placehold.co/600x400/333333/FFFFFF?text=Innovation+1",
+  "https://placehold.co/400x300/444444/FFFFFF?text=Innovation+2",
+  "https://placehold.co/500x350/555555/FFFFFF?text=Innovation+3",
+  "https://placehold.co/700x500/666666/FFFFFF?text=Innovation+4",
+  "https://placehold.co/450x250/777777/FFFFFF?text=Innovation+5",
+  "https://placehold.co/550x380/888888/FFFFFF?text=Innovation+6",
+  "https://placehold.co/650x420/999999/FFFFFF?text=Innovation+7",
+  "https://placehold.co/350x250/AAAAAA/FFFFFF?text=Innovation+8",
+];
 
 export default function CareersPage() {
+  useEffect(() => {
+    const style = document.createElement("style");
+    style.innerHTML = `
+      @keyframes sliding {
+        0% { transform: translateX(0); }
+        100% { transform: translateX(calc(-100%)); }
+      }
+      @keyframes slidingReverse {
+        0% { transform: translateX(calc(-100%)); }
+        100% { transform: translateX(0); }
+      }
+    `;
+    document.head.appendChild(style);
+  }, []);
+
   return (
-    <PageWrapper>
-      <div className="pb-16">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="text-center mb-16">
-            <h1 className="text-4xl md:text-6xl font-bold mb-6">Join the Mission</h1>
-            <p className="text-xl text-gray-400 max-w-3xl mx-auto">
-              We're building the future of autonomous systems. Join a team of innovators, engineers, and visionaries
-              pushing the boundaries of what's possible.
-            </p>
-          </div>
+    <main className="bg-black text-white font-[Farro]">
+      <section className="pt-24 pb-12 text-center px-4">
+  <h1 className="text-4xl md:text-6xl mb-4 font-normal font-farro">
+    Launch Ideas That Really Take Off.
+  </h1>
+  <p className="text-gray-400 text-lg mb-6">
+    Design, build, and launch the next generation of autonomous flight
+  </p>
+  <Link
+    href="#open-roles"
+    className="inline-flex items-center text-sm font-medium uppercase tracking-wide text-gray-300 hover:text-white group"
+  >
+    <span className="relative z-10">View Open Roles</span>
+    <span className="ml-2 w-6 h-6 border border-gray-300 rounded-full flex items-center justify-center transition-colors group-hover:bg-white group-hover:text-black">
+      &rarr;
+    </span>
+  </Link>
+</section>
 
-          <div className="grid gap-6 mb-16">
-            {openPositions.map((position) => (
-              <Card
-                key={position.id}
-                className="bg-gray-900 border-gray-800 card-link hover:border-blue-500 transition-colors"
-              >
-                <CardHeader>
-                  <div className="flex justify-between items-start">
-                    <div>
-                      <CardTitle className="text-white text-xl mb-2">{position.title}</CardTitle>
-                      <CardDescription className="text-gray-400">
-                        {position.department} • {position.location}
-                      </CardDescription>
-                    </div>
-                    <div className="flex gap-2">
-                      <Badge variant="outline">{position.type}</Badge>
-                      <Badge variant="secondary">{position.level}</Badge>
-                    </div>
-                  </div>
-                </CardHeader>
-                <CardContent>
-                  <Button className="button-link bg-blue-600 hover:bg-blue-700">Apply Now</Button>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-
-          <div className="text-center">
-            <h2 className="text-2xl font-bold mb-4">Don't see the right role?</h2>
-            <p className="text-gray-400 mb-6">We're always looking for exceptional talent. Send us your resume.</p>
-            <Button variant="outline" size="lg" className="button-link bg-transparent">
-              Send Resume
-            </Button>
-            <div className="mt-6">
-              <Link href="/about" className="text-link text-blue-400 hover:text-white">
-                Learn more about our company culture →
-              </Link>
-            </div>
-          </div>
-        </div>
+{/* Auto-Scrolling Image Section - shifted slightly higher */}
+<section className="overflow-hidden relative w-full pt-0 pb-8 -mt-4">
+  <div
+    className="flex gap-2 animate-[sliding_40s_linear_infinite]"
+    style={{ width: `${dummyImages.length * 300}px` }}
+  >
+    {[...dummyImages, ...dummyImages].map((src, index) => (
+      <div key={index} className="relative w-[300px] h-[200px] flex-shrink-0">
+        <Image src={src} alt={`Innovation ${index + 1}`} fill className="object-cover" />
       </div>
-    </PageWrapper>
-  )
+    ))}
+  </div>
+</section>
+
+      {/* Reverse Auto-Scrolling Image Section */}
+      <section className="overflow-hidden relative w-full pb-16">
+        <div
+          className="flex gap-2 animate-[slidingReverse_40s_linear_infinite]"
+          style={{ width: `${dummyImages.length * 300}px` }}
+        >
+          {[...dummyImages, ...dummyImages].map((src, index) => (
+            <div key={index} className="relative w-[300px] h-[200px] flex-shrink-0">
+              <Image src={src} alt={`Innovation Reverse ${index + 1}`} fill className="object-cover" />
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Minds & Makers Section */}
+      <section className="grid md:grid-cols-2 gap-8 items-start px-4 pb-24 max-w-7xl mx-auto">
+        <div>
+          <h2 className="text-3xl md:text-4xl font-semibold mb-4">The Minds & Makers</h2>
+        </div>
+
+        <div>
+          <p className="text-sm text-gray-400 mb-6">
+            Tsalla Aerospace is where visionaries and veterans converge to reimagine what’s possible in flight and
+            defense. We prototype by sunrise, refine by midnight, and never settle for ordinary. Shaped by lived
+            experience and fearless innovation, our team transforms challenges into breakthroughs.
+          </p>
+          <Link
+            href="/team"
+            className="inline-flex items-center text-sm text-gray-300 underline underline-offset-4 hover:text-white group"
+          >
+            <span className="relative z-10">Discover the minds and makers turning tomorrow’s ideas into today’s capabilities.</span>
+            <span className="ml-2 w-6 h-6 border border-gray-300 rounded-full flex items-center justify-center transition-colors group-hover:bg-white group-hover:text-black">
+              &rarr;
+            </span>
+          </Link>
+        </div>
+      </section>
+    </main>
+  );
 }
