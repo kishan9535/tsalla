@@ -12,39 +12,50 @@ interface NewsroomCardProps {
   readMoreLink: string
 }
 
-const NewsroomCard: React.FC<NewsroomCardProps> = ({ imageUrl, publicationDate, title, readMoreLink }) => {
+const NewsroomCard: React.FC<NewsroomCardProps> = ({
+  imageUrl,
+  publicationDate,
+  title,
+  readMoreLink,
+}) => {
   return (
-    <div className="group bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
-      {/* Image Container */}
-      <div className="relative h-48 overflow-hidden">
+    <div className="newsroom-card flex flex-col bg-transparent text-black group">
+      {/* Image */}
+      <div className="relative w-full h-48 md:h-56 lg:h-64 overflow-hidden mb-4 rounded-md">
         <Image
           src={imageUrl || "/placeholder.svg"}
           alt={title}
           fill
-          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
           className="object-cover transition-transform duration-300 group-hover:scale-105"
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
         />
       </div>
 
-      {/* Content */}
-      <div className="p-6">
-        {/* Publication Date */}
-        <div className="text-sm text-gray-500 mb-3 font-medium">{publicationDate}</div>
+      {/* Publication Date */}
+      <p className="text-gray-600 text-sm mb-2 font-medium">{publicationDate}</p>
 
-        {/* Title */}
-        <h3 className="text-lg font-bold text-gray-900 mb-4 line-clamp-3 group-hover:text-blue-600 transition-colors duration-200">
-          {title}
-        </h3>
+      {/* Title */}
+      <h3 className="text-lg md:text-xl font-semibold leading-snug mb-4 text-black">
+        {title}
+      </h3>
 
-        {/* Read More Link */}
-        <Link
-          href={readMoreLink}
-          className="inline-flex items-center text-blue-600 hover:text-blue-800 font-medium text-sm transition-colors duration-200 group/link"
-        >
+      {/* Read More Link with underline animation */}
+      <Link
+        href={readMoreLink}
+        className="relative inline-flex items-center text-sm font-medium text-black group"
+      >
+        <span className="relative z-10 mr-2">
           Read More
-          <ArrowRight size={16} className="ml-2 transition-transform duration-200 group-hover/link:translate-x-1" />
-        </Link>
-      </div>
+          <span className="block h-[1px] w-0 bg-black transition-all duration-300 group-hover:w-full" />
+        </span>
+        <ArrowRight
+          size={16}
+          className="transition-transform duration-200 transform group-hover:translate-x-1"
+        />
+      </Link>
+
+      {/* Divider */}
+      <div className="w-full h-px bg-gray-300 mt-6 opacity-50" />
     </div>
   )
 }

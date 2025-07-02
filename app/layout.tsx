@@ -7,7 +7,11 @@ import Footer from "@/components/Footer";
 
 // Load Inter and Farro fonts
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
-const farro = Farro({ subsets: ["latin"], variable: "--font-farro" });
+const farro = Farro({
+  weight: ["400", "700"], // Corrected: Added available weights for Farro font
+  subsets: ["latin"],
+  variable: "--font-farro",
+});
 
 export const metadata: Metadata = {
   title: "Tsalla Aerospace - Unmanned Systems & AI Technology",
@@ -24,6 +28,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={`${inter.variable} ${farro.variable}`}>
+      {/* The body class `font-farro` will apply the Farro font as the default.
+        Ensure this aligns with your `globals.css` if it also sets a font-family for `body`.
+        If 'Inter' is intended as the primary body font, you might adjust this to `font-inter`
+        and apply `font-farro` to specific elements via a class or CSS variable.
+      */}
       <body className="bg-black text-white font-farro">
         <Navbar />
         <main className="min-h-screen">{children}</main>
