@@ -3,11 +3,11 @@ import Image from "next/image"; // Import the Image component
 
 export default function Footer() {
   return (
-    <footer className="relative pt-20 lg:pt-48 bg-[#eaeaea] text-[#292E3A] z-[3] pb-20"> {/* Increased pb-10 to pb-20 for more space at the bottom */}
+    <footer className="relative pt-20 lg:pt-48 bg-[#eaeaea] text-[#292E3A] z-[3]">
       <div className="container mx-auto px-6 lg:px-24 max-w-[1440px] block lg:flex justify-between">
         {/* Left Hand Side: Brand Info, Mission, Buttons, Copyright */}
-        <div className="lhs flex flex-col lg:w-96 mb-10 lg:mb-0"> {/* Changed to flex-col for vertical stacking */}
-          <Link href="/" className="flex items-center z-50 mb-6 lg:mb-10 text-black"> {/* Adjusted margin-bottom */}
+        <div className="lhs flex flex-wrap lg:block lg:w-96 mb-10 lg:mb-0">
+          <Link href="/" className="flex items-center z-50 mb-10">
             <Image
               src="/tsalla_web.svg"
               alt="Tsalla Aerospace"
@@ -17,22 +17,22 @@ export default function Footer() {
               priority
             />
           </Link>
-          <p className="mt-0 text-lg leading-relaxed text-[#292E3A] opacity-80"> {/* Increased text size to text-lg */}
-            Our mission is to protect service members and civilians with Intelligent systems. {/* Adjusted text to match image */}
+          <p className="mt-0 font-mono opacity-100 text-base leading-relaxed">
+            Leading the future of unmanned systems and AI technology. We build unfair advantages.
           </p>
 
-          {/* Contact and Open Roles buttons */}
-          <div className="flex flex-wrap gap-4 mt-8 lg:mt-10"> {/* Adjusted gap and margin-top */}
+          {/* Contact and Open Roles buttons as per the original design */}
+          <div className="flex flex-wrap gap-6 mt-8">
             <Link
               className="
                 button button--white
                 border border-black/[0.15] bg-black/[0.024] text-black
-                py-4 px-5 flex items-center justify-center /* Adjusted padding for larger buttons */
-                font-mono text-sm uppercase tracking-wider leading-none relative /* Increased text size to text-sm */
+                py-5 px-4 flex items-center justify-center
+                font-mono text-xs uppercase tracking-wider leading-none relative
                 transition-colors duration-100 ease-in-out
                 hover:bg-black hover:text-white hover:border-black
               "
-              href="/contact"
+              href="/contact" // Link changed to your /contact page
             >
               CONTACT US
               <div className="button__top absolute inset-0 pointer-events-none transition-transform duration-100 ease-in-out"></div>
@@ -42,152 +42,120 @@ export default function Footer() {
               className="
                 button button--white
                 border border-black/[0.15] bg-black/[0.024] text-black
-                py-4 px-5 flex items-center justify-center /* Adjusted padding for larger buttons */
-                font-mono text-sm uppercase tracking-wider leading-none relative /* Increased text size to text-sm */
+                py-5 px-4 flex items-center justify-center
+                font-mono text-xs uppercase tracking-wider leading-none relative
                 transition-colors duration-100 ease-in-out
                 hover:bg-black hover:text-white hover:border-black
               "
-              href="/careers"
+              href="/careers" // Link changed to your /careers page
             >
               OPEN ROLES
               <div className="button__top absolute inset-0 pointer-events-none transition-transform duration-100 ease-in-out"></div>
               <div className="button__bottom absolute inset-0 pointer-events-none transition-transform duration-100 ease-in-out"></div>
             </Link>
           </div>
-          <small className="sub-title text-sm font-mono uppercase opacity-50 mt-10 block"> {/* Increased text size to text-sm */}
+          <small className="sub-title text-xs font-mono uppercase opacity-50 mt-10 block lg:static">
             &copy; {new Date().getFullYear()} Tsalla Aerospace. All rights reserved.
           </small>
         </div>
 
-        {/* Right Hand Side: Link Columns - Adjusted for 4 distinct columns as per image */}
-        <div className="middle grid grid-cols-2 md:grid-cols-4 gap-y-8 lg:gap-y-0 lg:gap-x-10 xl:gap-x-20 text-sm mt-10 lg:mt-0 lg:ml-20"> {/* Increased base text size to text-sm */}
+        {/* Right Hand Side: Link Columns - Adapted for 4 distinct columns */}
+        <div className="middle grid grid-cols-2 md:grid-cols-4 gap-y-10 lg:gap-y-0 lg:gap-x-10 xl:gap-x-20 sub-title text-xs mt-10 lg:mt-0">
 
-          {/* Column 1: Products (Replaces Hivemind) */}
+          {/* Column 1: Company */}
           <div>
-            <p className="font-mono text-black uppercase opacity-100 mb-4 tracking-wider text-base">PRODUCTS</p> {/* Increased text size to text-base */}
-            <ul className="flex flex-col gap-y-3 list-none p-0 m-0"> {/* Adjusted gap-y */}
+            <p className="font-mono text-black uppercase opacity-100 mb-4">Company</p>
+            <ul className="flex flex-col gap-y-3 lg:gap-y-4 list-none p-0 m-0">
               <li>
-                <Link href="/products/roadrunner" className="font-mono opacity-50 hover:opacity-100 transition-opacity text-base no-underline"> {/* Increased text size to text-base */}
+                <Link href="/about" className="font-mono opacity-50 hover:opacity-100 transition-opacity text-black no-underline">
+                  About
+                </Link>
+              </li>
+              <li>
+                <Link href="/leadership" className="font-mono opacity-50 hover:opacity-100 transition-opacity text-black no-underline">
+                  Leadership
+                </Link>
+              </li>
+              <li>
+                <Link href="/careers" className="font-mono opacity-50 hover:opacity-100 transition-opacity text-black no-underline">
+                  Careers
+                </Link>
+              </li>
+              <li>
+                <Link href="/newsroom" className="font-mono opacity-50 hover:opacity-100 transition-opacity text-black no-underline">
+                  Newsroom
+                </Link>
+              </li>
+            </ul>
+          </div>
+
+          {/* Column 2: Products */}
+          <div>
+            <p className="font-mono text-black uppercase opacity-100 mb-4">Products</p>
+            <ul className="flex flex-col gap-y-3 lg:gap-y-4 list-none p-0 m-0">
+              <li>
+                <Link href="/roadrunner" className="font-mono opacity-50 hover:opacity-100 transition-opacity text-black no-underline">
                   Roadrunner
                 </Link>
               </li>
               <li>
-                <Link href="/products/hardware" className="font-mono opacity-50 hover:opacity-100 transition-opacity text-base no-underline"> {/* Increased text size to text-base */}
+                <Link href="/hardware" className="font-mono opacity-50 hover:opacity-100 transition-opacity text-black no-underline">
                   Hardware
                 </Link>
               </li>
               <li>
-                <Link href="/products/mission-systems" className="font-mono opacity-50 hover:opacity-100 transition-opacity text-base no-underline"> {/* Increased text size to text-base */}
+                <Link href="/mission" className="font-mono opacity-50 hover:opacity-100 transition-opacity text-black no-underline">
                   Mission Systems
                 </Link>
               </li>
             </ul>
           </div>
 
-          {/* Column 2: Company (from image) */}
+          {/* Column 3: Resources */}
           <div>
-            <p className="font-mono text-black uppercase opacity-100 mb-4 tracking-wider text-base">COMPANY</p> {/* Increased text size to text-base */}
-            <ul className="flex flex-col gap-y-3 list-none p-0 m-0"> {/* Adjusted gap-y */}
+            <p className="font-mono text-black uppercase opacity-100 mb-4">Resources</p>
+            <ul className="flex flex-col gap-y-3 lg:gap-y-4 list-none p-0 m-0">
               <li>
-                <Link href="/about" className="font-mono opacity-50 hover:opacity-100 transition-opacity text-base no-underline"> {/* Increased text size to text-base */}
-                  About Us
-                </Link>
-              </li>
-              <li>
-                <Link href="/mission-autonomy" className="font-mono opacity-50 hover:opacity-100 transition-opacity text-base no-underline"> {/* Increased text size to text-base */}
-                  Mission Autonomy
-                </Link>
-              </li>
-              <li>
-                <Link href="/our-team" className="font-mono opacity-50 hover:opacity-100 transition-opacity text-base no-underline"> {/* Increased text size to text-base */}
-                  Our Team
-                </Link>
-              </li>
-              <li>
-                <Link href="/company-executives" className="font-mono opacity-50 hover:opacity-100 transition-opacity text-base no-underline"> {/* Increased text size to text-base */}
-                  Company Executives
-                </Link>
-              </li>
-              <li>
-                <Link href="/careers" className="font-mono opacity-50 hover:opacity-100 transition-opacity text-base no-underline"> {/* Increased text size to text-base */}
-                  Careers
-                </Link>
-              </li>
-              <li>
-                <Link href="/culture-book" className="font-mono opacity-50 hover:opacity-100 transition-opacity text-base no-underline"> {/* Increased text size to text-base */}
-                  Culture Book
-                </Link>
-              </li>
-            </ul>
-          </div>
-
-          {/* Column 3: Media (from image) */}
-          <div>
-            <p className="font-mono text-black uppercase opacity-100 mb-4 tracking-wider text-base">MEDIA</p> {/* Increased text size to text-base */}
-            <ul className="flex flex-col gap-y-3 list-none p-0 m-0"> {/* Adjusted gap-y */}
-              <li>
-                <Link href="/media-coverage" className="font-mono opacity-50 hover:opacity-100 transition-opacity text-base no-underline"> {/* Increased text size to text-base */}
-                  Media Coverage
-                </Link>
-              </li>
-              <li>
-                <Link href="/press-releases" className="font-mono opacity-50 hover:opacity-100 transition-opacity text-base no-underline"> {/* Increased text size to text-base */}
-                  Press Releases
-                </Link>
-              </li>
-              <li>
-                <Link href="/blog" className="font-mono opacity-50 hover:opacity-100 transition-opacity text-base no-underline"> {/* Increased text size to text-base */}
+                <Link href="/blog" className="font-mono opacity-50 hover:opacity-100 transition-opacity text-black no-underline">
                   Blog
                 </Link>
               </li>
+              <li>
+                <Link href="/media" className="font-mono opacity-50 hover:opacity-100 transition-opacity text-black no-underline">
+                  Media
+                </Link>
+              </li>
+              <li>
+                <Link href="/documents" className="font-mono opacity-50 hover:opacity-100 transition-opacity text-black no-underline">
+                  Documents
+                </Link>
+              </li>
             </ul>
           </div>
 
-          {/* Column 4: Legal (from image) */}
+          {/* Column 4: Contact */}
           <div>
-            <p className="font-mono text-black uppercase opacity-100 mb-4 tracking-wider text-base">LEGAL</p> {/* Increased text size to text-base */}
-            <ul className="flex flex-col gap-y-3 list-none p-0 m-0"> {/* Adjusted gap-y */}
-              <li>
-                <Link href="/legal/security" className="font-mono opacity-50 hover:opacity-100 transition-opacity text-base no-underline"> {/* Increased text size to text-base */}
-                  Security
-                </Link>
-              </li>
-              <li>
-                <Link href="/legal/privacy" className="font-mono opacity-50 hover:opacity-100 transition-opacity text-base no-underline"> {/* Increased text size to text-base */}
-                  Privacy
-                </Link>
-              </li>
-              <li>
-                <Link href="/legal/suppliers" className="font-mono opacity-50 hover:opacity-100 transition-opacity text-base no-underline"> {/* Increased text size to text-base */}
-                  Suppliers
-                </Link>
-              </li>
-            </ul>
+            <p className="font-mono text-black uppercase opacity-100 mb-4">Contact</p>
+            <p className="font-mono opacity-100 text-base leading-relaxed mb-4">
+              Building the future of autonomous systems
+            </p>
+            <Link
+              href="/contact"
+              className="
+                button button--white
+                border border-black/[0.15] bg-black/[0.024] text-black
+                py-5 px-4 flex items-center justify-center
+                font-mono text-xs uppercase tracking-wider leading-none relative
+                transition-colors duration-100 ease-in-out
+                hover:bg-black hover:text-white hover:border-black
+                inline-block
+              "
+            >
+              Get in Touch
+              <div className="button__top absolute inset-0 pointer-events-none transition-transform duration-100 ease-in-out"></div>
+              <div className="button__bottom absolute inset-0 pointer-events-none transition-transform duration-100 ease-in-out"></div>
+            </Link>
           </div>
-
-          {/* Social Media Links (CONNECT) - Now a distinct column */}
-          <div className="col-span-2 md:col-span-1 mt-8 md:mt-0"> {/* Adjusted col-span and margin-top for responsiveness */}
-            <p className="font-mono text-black uppercase opacity-100 mb-4 tracking-wider text-base">CONNECT</p> {/* Increased text size to text-base */}
-            <ul className="flex flex-col gap-y-3 list-none p-0 m-0"> {/* Adjusted gap-y */}
-              <li>
-                <Link href="https://twitter.com/tsalla_aerospace" target="_blank" rel="noopener noreferrer" className="font-mono opacity-50 hover:opacity-100 transition-opacity text-base no-underline"> {/* Increased text size to text-base */}
-                  Twitter
-                </Link>
-              </li>
-              <li>
-                <Link href="https://linkedin.com/company/tsalla-aerospace" target="_blank" rel="noopener noreferrer" className="font-mono opacity-50 hover:opacity-100 transition-opacity text-base no-underline"> {/* Increased text size to text-base */}
-                  LinkedIn
-                </Link>
-              </li>
-              <li>
-                <Link href="https://facebook.com/tsalla.aerospace" target="_blank" rel="noopener noreferrer" className="font-mono opacity-50 hover:opacity-100 transition-opacity text-base no-underline"> {/* Increased text size to text-base */}
-                  Facebook
-                </Link>
-              </li>
-              {/* Add more social media links as needed */}
-            </ul>
-          </div>
-
         </div>
       </div>
     </footer>

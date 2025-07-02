@@ -72,11 +72,16 @@ module.exports = {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
       },
-      fontFamily: {
-        farro: ['var(--font-farro)', 'sans-serif'],
-        inter: ['var(--font-inter)', 'sans-serif'],
-      },
     },
   },
   plugins: [require("tailwindcss-animate")],
+}
+module.exports = {
+  theme: {
+    extend: {
+      fontFamily: {
+        farro: ['Farro', 'sans-serif'],
+      },
+    },
+  },
 }
