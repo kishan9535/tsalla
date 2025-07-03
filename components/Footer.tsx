@@ -84,52 +84,69 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Navigation Columns */}
-          <div className="lg:col-span-1">
-            <h3 className="font-bold text-black mb-6 text-lg">AI PILOT</h3>
-            <ul className="space-y-3">
-              <li><Link href="/ai-pilot/roadrunner" className="text-gray-600 hover:text-black">Roadrunner</Link></li>
-              <li><Link href="/ai-pilot/autonomous-flight" className="text-gray-600 hover:text-black">Autonomous Flight</Link></li>
-              <li><Link href="/ai-pilot/mission-planning" className="text-gray-600 hover:text-black">Mission Planning</Link></li>
-              <li><Link href="/ai-pilot/flight-control" className="text-gray-600 hover:text-black">Flight Control</Link></li>
-            </ul>
-          </div>
-
-          <div className="lg:col-span-1">
-            <h3 className="font-bold text-black mb-6 text-lg">SPACE SYSTEMS</h3>
-            <ul className="space-y-3">
-              <li><Link href="/space-systems/satellites" className="text-gray-600 hover:text-black">Satellites</Link></li>
-              <li><Link href="/space-systems/launch-vehicles" className="text-gray-600 hover:text-black">Launch Vehicles</Link></li>
-              <li><Link href="/space-systems/orbital-platforms" className="text-gray-600 hover:text-black">Orbital Platforms</Link></li>
-              <li><Link href="/space-systems/deep-space" className="text-gray-600 hover:text-black">Deep Space</Link></li>
-            </ul>
-          </div>
-
-          <div className="lg:col-span-1">
-            <h3 className="font-bold text-black mb-6 text-lg">UNMANNED SYSTEMS</h3>
-            <ul className="space-y-3">
-              <li><Link href="/unmanned-systems/drones" className="text-gray-600 hover:text-black">Drones</Link></li>
-              <li><Link href="/unmanned-systems/ground-vehicles" className="text-gray-600 hover:text-black">Ground Vehicles</Link></li>
-              <li><Link href="/unmanned-systems/marine-systems" className="text-gray-600 hover:text-black">Marine Systems</Link></li>
-              <li><Link href="/unmanned-systems/surveillance" className="text-gray-600 hover:text-black">Surveillance</Link></li>
-            </ul>
-          </div>
-
-          <div className="lg:col-span-1">
-            <h3 className="font-bold text-black mb-6 text-lg">OTHERS</h3>
-            <ul className="space-y-3">
-              <li><Link href="/about" className="text-gray-600 hover:text-black">About</Link></li>
-              <li><Link href="/careers" className="text-gray-600 hover:text-black">Careers</Link></li>
-              <li><Link href="/gallery" className="text-gray-600 hover:text-black">Gallery</Link></li>
-              <li><Link href="/newsletter" className="text-gray-600 hover:text-black">Newsletter Section</Link></li>
-            </ul>
-          </div>
+          {/* Navigation Columns with animated underlines */}
+          {[
+            {
+              title: "AI PILOT",
+              links: [
+                { href: "/ai-pilot/roadrunner", text: "Roadrunner" },
+                { href: "/ai-pilot/autonomous-flight", text: "Autonomous Flight" },
+                { href: "/ai-pilot/mission-planning", text: "Mission Planning" },
+                { href: "/ai-pilot/flight-control", text: "Flight Control" },
+              ],
+            },
+            {
+              title: "SPACE SYSTEMS",
+              links: [
+                { href: "/space-systems/satellites", text: "Satellites" },
+                { href: "/space-systems/launch-vehicles", text: "Launch Vehicles" },
+                { href: "/space-systems/orbital-platforms", text: "Orbital Platforms" },
+                { href: "/space-systems/deep-space", text: "Deep Space" },
+              ],
+            },
+            {
+              title: "UNMANNED SYSTEMS",
+              links: [
+                { href: "/unmanned-systems/drones", text: "Drones" },
+                { href: "/unmanned-systems/ground-vehicles", text: "Ground Vehicles" },
+                { href: "/unmanned-systems/marine-systems", text: "Marine Systems" },
+                { href: "/unmanned-systems/surveillance", text: "Surveillance" },
+              ],
+            },
+            {
+              title: "OTHERS",
+              links: [
+                { href: "/about", text: "About" },
+                { href: "/careers", text: "Careers" },
+                { href: "/gallery", text: "Gallery" },
+                { href: "/newsroom", text: "Newsletter Section" },
+              ],
+            },
+          ].map(({ title, links }) => (
+            <div key={title} className="lg:col-span-1">
+              <h3 className="font-bold text-black mb-6 text-lg">{title}</h3>
+              <ul className="space-y-3">
+                {links.map(({ href, text }) => (
+                  <li key={href}>
+                    <Link
+                      href={href}
+                      className="text-gray-600 hover:text-black relative group transition-colors duration-200"
+                    >
+                      <span className="after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:w-0 after:bg-black after:transition-all after:duration-300 group-hover:after:w-full">
+                        {text}
+                      </span>
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
         </div>
 
         {/* Copyright */}
         <div className="mt-16 pt-8 border-t border-gray-200">
           <div className="flex justify-end">
-            <p className="text-gray-600 text-sm">©TSALLA AEROSPACE 2025</p>
+            <p className="text-gray-600 text-sm">© TSALLA AEROSPACE 2025</p>
           </div>
         </div>
       </div>
