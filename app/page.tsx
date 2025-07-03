@@ -5,9 +5,9 @@ import Testimonials from "@/components/Testimonials"
 import Newsletter from "@/components/Newsletter"
 import PageWrapper from "@/components/PageWrapper"
 
-export default function Home() {
+export default function HomePage() {
   return (
-    <PageWrapper>
+    <PageWrapper hasHero={true}>
       <HeroSection />
       <CommitmentSection />
       <TechTools />

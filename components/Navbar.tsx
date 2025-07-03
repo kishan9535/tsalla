@@ -4,85 +4,77 @@ import { useState, useEffect, useRef } from "react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import Image from "next/image"
-import { Menu, X, Plus } from "lucide-react"
+import { Menu, X, Plus, ArrowRight } from "lucide-react"
 
 const megaMenuData = {
   "/about": {
     title: "ABOUT",
     description:
-      "Tsalla Aerospace is pioneering the future of autonomous systems with cutting-edge technology that delivers unfair advantages in modern warfare and exploration. Our mission-critical solutions are designed for superiority in the field, where precision and reliability determine success.",
+      "Learn about Tsalla Aerospace's mission to revolutionize autonomous systems and create unfair advantages in modern warfare and exploration.",
     links: [
-      { name: "Our Mission", href: "/about#mission" },
-      { name: "Leadership Team", href: "/leadership" },
-      { name: "Company Values", href: "/about#values" },
-      { name: "Innovation Labs", href: "/about#labs" },
-      { name: "Global Presence", href: "/about#locations" },
-      { name: "Partnerships", href: "/about#partners" },
+      { name: "Our Mission", href: "/about#mission", description: "Building the future of autonomous systems" },
+      { name: "Leadership", href: "/leadership", description: "Meet our visionary team" },
+      { name: "Company Culture", href: "/about#culture", description: "Innovation without compromise" },
+      { name: "History", href: "/about#history", description: "Our journey to excellence" },
     ],
   },
   "/roadrunner": {
     title: "AI PILOT",
     description:
-      "Revolutionary Roadrunner AI system that thinks, adapts, and executes missions with unprecedented autonomy. Real-time decision making where delay means defeat. Advanced neural networks process battlefield data in milliseconds, ensuring tactical superiority.",
+      "Revolutionary Roadrunner AI system that thinks, adapts, and executes missions with unprecedented autonomy. Real-time decision making where delay means defeat.",
     links: [
-      { name: "Roadrunner Core", href: "/roadrunner" },
-      { name: "Neural Networks", href: "/roadrunner#neural" },
-      { name: "Decision Engine", href: "/roadrunner#decisions" },
-      { name: "Adaptive Learning", href: "/roadrunner#learning" },
-      { name: "Mission Execution", href: "/roadrunner#execution" },
-      { name: "Real-time Analytics", href: "/roadrunner#analytics" },
+      { name: "Roadrunner Core", href: "/roadrunner", description: "Advanced AI pilot system" },
+      {
+        name: "Autonomous Decision Making",
+        href: "/roadrunner#decisions",
+        description: "Real-time tactical intelligence",
+      },
+      { name: "Adaptive Learning", href: "/roadrunner#learning", description: "Continuous mission improvement" },
+      { name: "Mission Execution", href: "/roadrunner#execution", description: "Flawless operation coordination" },
     ],
   },
   "/hardware": {
     title: "SPACE SYSTEMS",
     description:
-      "Advanced unmanned systems engineered for superiority in space operations. Every component designed for reliability, performance, and tactical advantage in the harshest environments. Cutting-edge propulsion and navigation systems for mission-critical operations.",
+      "Advanced unmanned systems engineered for superiority in the field. Every component designed for reliability, performance, and tactical advantage.",
     links: [
-      { name: "Phantom X1", href: "/hardware#phantom" },
-      { name: "Sentinel Pro", href: "/hardware#sentinel" },
-      { name: "Orbital Platform", href: "/hardware#orbital" },
-      { name: "Deep Space Probe", href: "/hardware#deepspace" },
-      { name: "Satellite Network", href: "/hardware#satellite" },
-      { name: "Launch Systems", href: "/hardware#launch" },
+      { name: "Phantom X1", href: "/hardware#phantom", description: "Advanced reconnaissance drone" },
+      { name: "Sentinel Pro", href: "/hardware#sentinel", description: "Long-range surveillance system" },
+      { name: "Hardware Overview", href: "/hardware", description: "Complete systems catalog" },
+      { name: "Technical Specs", href: "/hardware#specs", description: "Detailed specifications" },
     ],
   },
   "/mission": {
     title: "UNMANNED SYSTEMS",
     description:
-      "Comprehensive autonomous systems for complex mission operations. Seamless coordination of multiple platforms for intelligence, surveillance, reconnaissance, and tactical operations. Advanced swarm intelligence and distributed command systems.",
+      "Comprehensive mission planning and execution systems for complex autonomous operations. Seamless coordination of multiple systems for mission-critical operations.",
     links: [
-      { name: "Swarm Intelligence", href: "/mission#swarm" },
-      { name: "Mission Planning", href: "/mission#planning" },
-      { name: "Execution Systems", href: "/mission#execution" },
-      { name: "Command & Control", href: "/mission#command" },
-      { name: "Analysis Tools", href: "/mission#analysis" },
-      { name: "Integration Hub", href: "/mission#integration" },
+      { name: "Mission Planning", href: "/mission#planning", description: "Advanced operation design" },
+      { name: "Execution Systems", href: "/mission#execution", description: "Real-time mission control" },
+      { name: "Analysis Tools", href: "/mission#analysis", description: "Post-mission intelligence" },
+      { name: "Integration", href: "/mission#integration", description: "Multi-system coordination" },
     ],
   },
   "/contact": {
     title: "CONTACT US",
     description:
-      "Ready to discuss the future of autonomous systems? Connect with our team to explore partnerships, demonstrations, and custom solutions. Our experts are available for technical consultations and strategic planning sessions.",
+      "Ready to discuss the future of autonomous systems? Connect with our team to explore partnerships, demonstrations, and custom solutions.",
     links: [
-      { name: "General Inquiries", href: "/contact" },
-      { name: "Technical Support", href: "/contact#support" },
-      { name: "Partnership", href: "/contact#partnership" },
-      { name: "Demo Request", href: "/contact#demo" },
-      { name: "Sales Team", href: "/contact#sales" },
-      { name: "Media Relations", href: "/contact#media" },
+      { name: "General Inquiries", href: "/contact", description: "Get in touch with our team" },
+      { name: "Partnership", href: "/contact#partnership", description: "Strategic collaborations" },
+      { name: "Demo Request", href: "/contact#demo", description: "See our systems in action" },
+      { name: "Support", href: "/contact#support", description: "Technical assistance" },
     ],
   },
   "/careers": {
     title: "JOIN THE MISSION",
     description:
-      "Join a team of innovators, engineers, and visionaries pushing the boundaries of what's possible in autonomous systems and aerospace technology. Shape the future of defense and exploration with cutting-edge research and development.",
+      "Join a team of innovators, engineers, and visionaries pushing the boundaries of what's possible in autonomous systems and aerospace technology.",
     links: [
-      { name: "Engineering Roles", href: "/careers#engineering" },
-      { name: "Research Positions", href: "/careers#research" },
-      { name: "AI Specialists", href: "/careers#ai" },
-      { name: "Systems Integration", href: "/careers#systems" },
-      { name: "Mission Operations", href: "/careers#operations" },
-      { name: "Internship Program", href: "/careers#internships" },
+      { name: "Open Positions", href: "/careers", description: "Current opportunities" },
+      { name: "Engineering", href: "/careers#engineering", description: "Build the future" },
+      { name: "Research", href: "/careers#research", description: "Advance the science" },
+      { name: "Culture", href: "/careers#culture", description: "Our work environment" },
     ],
   },
 }
@@ -111,7 +103,7 @@ export default function Navbar() {
       const currentScrollY = window.scrollY
       if (currentScrollY > lastScrollY.current && currentScrollY > 100) {
         setIsVisible(false)
-        setActiveMegaMenu(null)
+        setActiveMegaMenu(null) // Close mega menu when scrolling
       } else {
         setIsVisible(true)
       }
@@ -139,7 +131,7 @@ export default function Navbar() {
   const handleMouseLeave = () => {
     const timeout = setTimeout(() => {
       setActiveMegaMenu(null)
-    }, 100)
+    }, 150) // Small delay to prevent flickering
     setMegaMenuTimeout(timeout)
   }
 
@@ -164,7 +156,8 @@ export default function Navbar() {
         `}
       >
         <div className="w-full">
-          <div className="flex items-center justify-between h-20 border-b border-white/100 px-4 sm:px-6">
+         <div className="flex items-center justify-between h-20 border-b border-white/100 px-4 sm:px-6">
+
             {/* Logo */}
             <Link href="/" className="flex items-center z-50">
               <Image
@@ -195,7 +188,7 @@ export default function Navbar() {
                     `}
                   >
                     <span
-                      className={`animated-underline font-mono ${
+                      className={`animated-underline font-mono font-normal ${
                         pathname === item.href ? "text-blue-400" : "text-white hover:text-blue-400"
                       }`}
                     >
@@ -219,40 +212,61 @@ export default function Navbar() {
           </div>
         </div>
 
-        {/* Mega Menu - Exact design from image */}
+        {/* Mega Menu */}
         {activeMegaMenu && megaMenuData[activeMegaMenu as keyof typeof megaMenuData] && (
           <div
-            className="absolute top-full left-0 right-0 bg-black z-40 animate-slideDown shadow-2xl"
+            className="absolute top-full left-0 right-0 bg-black border-b border-white/20 shadow-2xl z-40 animate-slideDown"
             onMouseEnter={handleMegaMenuEnter}
             onMouseLeave={handleMegaMenuLeave}
           >
-            <div className="flex min-h-[400px]">
-              {/* Left Half - Links */}
-              <div className="w-1/2 p-12 border-r border-white/20">
+            <div className="max-w-7xl mx-auto px-4 py-8">
+              <div className="grid grid-cols-2 gap-12">
+                {/* Left Half - Links */}
                 <div className="space-y-1">
-                  <h3 className="text-sm font-semibold text-gray-400 mb-8 tracking-wider">
+                  <h3 className="text-sm font-semibold text-gray-400 mb-6 tracking-wider">
                     {megaMenuData[activeMegaMenu as keyof typeof megaMenuData].title}
                   </h3>
-                  <div className="space-y-4">
-                    {megaMenuData[activeMegaMenu as keyof typeof megaMenuData].links.map((link, index) => (
-                      <Link
-                        key={index}
-                        href={link.href}
-                        className="block text-white text-2xl font-light hover:text-blue-400 transition-colors duration-300 leading-relaxed"
-                      >
-                        {link.name}
-                      </Link>
-                    ))}
-                  </div>
+                  {megaMenuData[activeMegaMenu as keyof typeof megaMenuData].links.map((link, index) => (
+                    <Link
+                      key={index}
+                      href={link.href}
+                      className="group block p-3 rounded-lg hover:bg-white/5 transition-colors"
+                    >
+                      <div className="flex items-center justify-between">
+                        <div>
+                          <div className="text-white font-medium text-lg group-hover:text-blue-400 transition-colors">
+                            {link.name}
+                          </div>
+                          <div className="text-gray-400 text-sm mt-1">{link.description}</div>
+                        </div>
+                        <ArrowRight
+                          size={16}
+                          className="text-gray-600 group-hover:text-blue-400 group-hover:translate-x-1 transition-all"
+                        />
+                      </div>
+                    </Link>
+                  ))}
                 </div>
-              </div>
 
-              {/* Right Half - Description */}
-              <div className="w-1/2 p-12 flex items-center">
-                <div className="space-y-6">
-                  <p className="text-gray-300 text-lg leading-relaxed font-light">
-                    {megaMenuData[activeMegaMenu as keyof typeof megaMenuData].description}
-                  </p>
+                {/* Right Half - Description */}
+                <div className="flex flex-col justify-center">
+                  <div className="space-y-6">
+                    <h2 className="text-3xl font-bold text-white leading-tight">
+                      {megaMenuData[activeMegaMenu as keyof typeof megaMenuData].title}
+                    </h2>
+                    <p className="text-gray-300 text-lg leading-relaxed">
+                      {megaMenuData[activeMegaMenu as keyof typeof megaMenuData].description}
+                    </p>
+                    <div className="pt-4">
+                      <Link
+                        href={activeMegaMenu}
+                        className="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg transition-colors font-medium"
+                      >
+                        Explore More
+                        <ArrowRight size={16} />
+                      </Link>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -263,7 +277,10 @@ export default function Navbar() {
       {/* Mobile Menu */}
       {mobileMenuOpen && (
         <div className="fixed inset-0 z-40 lg:hidden">
+          {/* Backdrop */}
           <div className="absolute inset-0 bg-black/80 backdrop-blur-sm" onClick={() => setMobileMenuOpen(false)} />
+
+          {/* Menu Content */}
           <div className="absolute top-20 left-0 right-0 bg-black/95 border-t border-white/20">
             <div className="flex flex-col">
               {navigationItems.map((item) => (

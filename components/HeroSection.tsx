@@ -39,9 +39,10 @@ export default function HeroSection() {
           UNCOMPROMISED.
         </h1>
 
-        <p className="text-xl md:text-2xl mb-8 text-gray-200 max-w-2xl text-left italic">
-          We Don't Build Drones. We Build Unfair Advantages.
-        </p>
+        <p className="text-xl md:text-2xl mb-8 max-w-2xl text-left font-farro text-white">
+  We Don't Build Drones. We Build Unfair Advantages.
+</p>
+
 
         <Button
           asChild
