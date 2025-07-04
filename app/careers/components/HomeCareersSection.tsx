@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect } from "react";
+import React from "react";
 
 const dummyImages = [
   "https://img.freepik.com/premium-photo/human-resources-people-networking-concept_31965-1706.jpg?ga=GA1.1.1396164666.1751527470&semt=ais_items_boosted&w=740",
@@ -17,25 +17,10 @@ const dummyImages = [
 ];
 
 export default function HomeCareersSection() {
-  useEffect(() => {
-    const style = document.createElement("style");
-    style.innerHTML = `
-      @keyframes sliding {
-        0% { transform: translateX(0); }
-        100% { transform: translateX(calc(-100%)); }
-      }
-      @keyframes slidingReverse {
-        0% { transform: translateX(calc(-100%)); }
-        100% { transform: translateX(0); }
-      }
-    `;
-    document.head.appendChild(style);
-  }, []);
-
   return (
-    <section className="bg-black text-white font-[Farro]">
+    <section className="bg-black text-white font-farro">
       {/* Hero Section */}
-      <div className="pt-24 pb-12 text-center px-4">
+      <div className="pt-40 pb-12 text-center px-4">
         <h1 className="text-4xl md:text-6xl mb-4 font-normal">
           Launch Ideas That Really Take Off.
         </h1>
@@ -53,16 +38,18 @@ export default function HomeCareersSection() {
         </Link>
       </div>
 
-      {/* Auto-Scrolling Image Section */}
+      {/* Auto-Scrolling Image Section (Left to Right) - Only one animation section now */}
       <div className="overflow-hidden relative w-full pb-8 -mt-4">
         <div
           className="flex gap-2 animate-[sliding_40s_linear_infinite]"
-          style={{ width: `${dummyImages.length * 300}px` }}
+          // UPDATED: Adjusted width calculation for larger boxes (350px width + 8px gap = 358px per item)
+          style={{ width: `${dummyImages.length * 358}px` }}
         >
+          {/* Duplicate dummyImages to create a seamless loop */}
           {[...dummyImages, ...dummyImages].map((src, index) => (
             <div
               key={index}
-              className="relative w-[300px] h-[200px] flex-shrink-0"
+              className="relative w-[350px] h-[350px] flex-shrink-0 rounded-lg overflow-hidden" // UPDATED: Made boxes larger
             >
               <Image
                 src={src}
@@ -75,30 +62,8 @@ export default function HomeCareersSection() {
         </div>
       </div>
 
-      {/* Reverse Auto-Scrolling Image Section */}
-      <div className="overflow-hidden relative w-full pb-16">
-        <div
-          className="flex gap-2 animate-[slidingReverse_40s_linear_infinite]"
-          style={{ width: `${dummyImages.length * 300}px` }}
-        >
-          {[...dummyImages, ...dummyImages].map((src, index) => (
-            <div
-              key={index}
-              className="relative w-[300px] h-[200px] flex-shrink-0"
-            >
-              <Image
-                src={src}
-                alt={`Innovation Reverse ${index + 1}`}
-                fill
-                className="object-cover"
-              />
-            </div>
-          ))}
-        </div>
-      </div>
-
       {/* Minds & Makers Section */}
-      <div className="grid md:grid-cols-2 gap-8 items-start px-4 pb-24 max-w-7xl mx-auto">
+      <div className="grid md:grid-cols-2 gap-8 items-start px-4 pb-24 max-w-7xl mx-auto pt-3">
         <div>
           <h2 className="text-3xl md:text-4xl font-semibold mb-4">
             The Minds & Makers

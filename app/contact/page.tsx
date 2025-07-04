@@ -148,7 +148,7 @@ export default function ContactPage() {
           {/* Feedback */}
           <div className="text-center mt-6">
             {errorFields.length > 0 && (
-              <div className="text-red-500 text-sm animate-shake mb-2">
+              <div className="text-red-500 text-sm animate-bounce mb-2">
                 Please fill out the following fields:{" "}
                 <span className="font-semibold">{errorFields.join(", ")}</span>
               </div>
