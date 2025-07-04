@@ -23,17 +23,27 @@ export default function ContactPage() {
 
   const [submitted, setSubmitted] = useState(false)
   const [errorFields, setErrorFields] = useState<string[]>([])
+  const [isLoading, setIsLoading] = useState(false)
+  const [apiError, setApiError] = useState("")
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { id, value } = e.target
     setFormData((prev) => ({ ...prev, [id]: value }))
+    // Clear errors when user starts typing
+    if (errorFields.length > 0) {
+      setErrorFields([])
+    }
+    if (apiError) {
+      setApiError("")
+    }
   }
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
 
     const missing: string[] = []
 
+    // Validate required fields
     Object.entries(formData).forEach(([key, value]) => {
       if (!value.trim()) {
         const formatted = key
@@ -49,19 +59,51 @@ export default function ContactPage() {
       return
     }
 
-    // Success
+    // Validate email format
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+    if (!emailRegex.test(formData.email)) {
+      setErrorFields(["Please enter a valid email address"])
+      return
+    }
+
+    setIsLoading(true)
     setErrorFields([])
-    setSubmitted(true)
+    setApiError("")
 
-    setFormData({
-      fullName: "",
-      email: "",
-      phone: "",
-      enquiryType: "",
-      message: "",
-    })
+    try {
+      const response = await fetch('/api/send-email', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      })
 
-    setTimeout(() => setSubmitted(false), 5000)
+      const result = await response.json()
+
+      if (!response.ok) {
+        throw new Error(result.error || 'Failed to send message')
+      }
+
+      // Success
+      setSubmitted(true)
+      setFormData({
+        fullName: "",
+        email: "",
+        phone: "",
+        enquiryType: "",
+        message: "",
+      })
+
+      // Auto-hide success message after 5 seconds
+      setTimeout(() => setSubmitted(false), 5000)
+
+    } catch (error) {
+      console.error('Error sending message:', error)
+      setApiError(error instanceof Error ? error.message : 'Failed to send message. Please try again.')
+    } finally {
+      setIsLoading(false)
+    }
   }
 
   return (
@@ -148,24 +190,55 @@ export default function ContactPage() {
           {/* Feedback */}
           <div className="text-center mt-6">
             {errorFields.length > 0 && (
-              <div className="text-red-500 text-sm animate-shake mb-2">
-                Please fill out the following fields:{" "}
-                <span className="font-semibold">{errorFields.join(", ")}</span>
+              <div className="text-red-500 text-sm animate-bounce mb-2">
+                {errorFields.length === 1 && errorFields[0] === "Please enter a valid email address" 
+                  ? errorFields[0]
+                  : `Please fill out the following fields: ${errorFields.join(", ")}`
+                }
+              </div>
+            )}
+
+            {apiError && (
+              <div className="text-red-500 text-sm mb-2 bg-red-50 border border-red-200 rounded-md p-3 max-w-md mx-auto">
+                ⚠️ {apiError}
               </div>
             )}
 
             {submitted && (
-              <p className="text-green-400 text-sm animate-pulse mb-2">
-                ✅ Message sent successfully!
+              <p className="text-green-400 text-sm animate-pulse mb-2 bg-green-50 border border-green-200 rounded-md p-3 max-w-md mx-auto">
+                ✅ Message sent successfully! Check your email for confirmation.
               </p>
             )}
 
             <Button
               type="submit"
               onClick={handleSubmit}
-              className="bg-[#D8D8D8] text-black font-normal text-base px-10 py-2 hover:bg-gray-400 rounded-md"
+              disabled={isLoading}
+              className="bg-[#D8D8D8] text-black font-normal text-base px-10 py-2 hover:bg-gray-400 rounded-md disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200"
             >
-              Send
+              {isLoading ? (
+                <span className="flex items-center gap-2">
+                  <svg className="animate-spin h-4 w-4" viewBox="0 0 24 24">
+                    <circle
+                      className="opacity-25"
+                      cx="12"
+                      cy="12"
+                      r="10"
+                      stroke="currentColor"
+                      strokeWidth="4"
+                      fill="none"
+                    />
+                    <path
+                      className="opacity-75"
+                      fill="currentColor"
+                      d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                    />
+                  </svg>
+                  Sending...
+                </span>
+              ) : (
+                "Send"
+              )}
             </Button>
           </div>
 
