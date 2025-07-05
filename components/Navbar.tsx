@@ -84,7 +84,7 @@ const navigationItems = [
   { name: "AI PILOT", href: "/roadrunner" },
   { name: "SPACE SYSTEMS", href: "/hardware" },
   { name: "UNMANNED SYSTEMS", href: "/mission" },
-  { name: "CONTACT US", href: "/contact" },
+  
   { name: "JOIN THE MISSION", href: "/careers" },
 ]
 
