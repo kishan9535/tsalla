@@ -14,7 +14,7 @@ export default function WhatWeDo() {
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-12">
           {/* Image Left */}
           <div className="w-full md:w-1/2">
-            <div className="relative w-full h-[400px] md:h-[500px] rounded-md overflow-hidden">
+            <div className="relative w-full h-[400px] md:h-[500px]  overflow-hidden">
               <Image
                 src="https://quantum-systems.com/wp-content/uploads/bf-advanced-images/6503/20240801-unmanned-CIHBW-16-800x800.jpg"
                 alt="City Aerial"

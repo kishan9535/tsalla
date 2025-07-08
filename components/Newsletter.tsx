@@ -7,14 +7,16 @@ import { ArrowRight } from "lucide-react"
 
 const Newsletter: React.FC = () => {
   return (
-    <section className="bg-[#eaeaea] py-16 lg:py-24">
+    <section className="bg-[#eaeaea] py-16 lg:py-24 font-['Pontano_Sans']">
       <div className="container mx-auto px-6 lg:px-24 max-w-[1440px]">
         {/* Section Title */}
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-black mb-4">Latest News & Updates</h2>
-          <p className="text-gray-600 text-lg max-w-2xl mx-auto">
-            Stay informed about our latest innovations, partnerships, and breakthrough technologies in aerospace and
-            defense.
+          <p className="text-gray-500 uppercase tracking-widest mb-4 text-lg">NEWSROOM</p>
+          <h2 className="text-[40px] tracking-[0.02em] leading-[1.5] text-black transition-all duration-700 ease-out transform opacity-100 translate-y-0 font-['Anton'] font-normal mb-4">
+            Latest News & Updates
+          </h2>
+          <p className="text-gray-600 text-base md:text-lg font-['Pontano_Sans'] px-6 md:px-12 xl:px-24 max-w-[1440px]">
+            Stay informed about our latest innovations, partnerships, and breakthrough technologies in aerospace and defense.
           </p>
         </div>
 
@@ -40,13 +42,15 @@ const Newsletter: React.FC = () => {
           />
         </div>
 
-        {/* More in Newsroom Link */}
-        <div className="text-center mt-16">
+        {/* More in Newsroom Link aligned right */}
+        <div className="mt-16 flex justify-end">
           <Link
             href="/newsroom"
-            className="inline-flex items-center text-black hover:text-blue-600 transition-colors duration-200 no-underline group text-base font-medium"
+            className="inline-flex items-center text-black group text-base font-medium transition-all duration-200"
           >
-            More in Newsroom
+            <span className="relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[2px] after:bg-black after:transition-all after:duration-300 group-hover:after:w-full">
+              More in Newsroom
+            </span>
             <ArrowRight size={18} className="ml-2 transition-transform duration-200 group-hover:translate-x-1" />
           </Link>
         </div>

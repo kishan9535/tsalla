@@ -18,7 +18,7 @@ export default function TechTools() {
           }
         })
       },
-      { threshold: 0.3 }
+      { threshold: 0.3 },
     )
 
     if (sectionRef.current) observer.observe(sectionRef.current)
@@ -28,10 +28,7 @@ export default function TechTools() {
   }, [])
 
   return (
-    <section
-      ref={sectionRef}
-      className="relative w-full h-screen text-white flex items-center justify-center"
-    >
+    <section ref={sectionRef} className="relative w-full h-screen text-white flex items-center justify-center">
       {/* Background Image Layer */}
       <div className="absolute inset-0 z-0">
         <img
@@ -46,7 +43,7 @@ export default function TechTools() {
         {/* Left Column */}
         <div className="flex flex-col">
           <h2
-            className={`text-gray-300 mb-4 uppercase tracking-widest transition-all duration-700 transform text-sm font-semibold ${
+            className={`text-white/60 mb-4 uppercase tracking-widest transition-all duration-700 transform text-sm font-semibold ${
               isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-16"
             }`}
             style={{ transitionDelay: "0ms" }}
@@ -54,19 +51,26 @@ export default function TechTools() {
             OUR TECHNOLOGY
           </h2>
           <h3
-            className={`text-4xl md:text-5xl font-bold mb-6 transition-all duration-700 transform font-mono ${
+            className={`text-white/70 mb-6 transition-all duration-700 transform font-mono ${
               isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-16"
             }`}
-            style={{ transitionDelay: "150ms" }}
+            style={{
+              transitionDelay: "150ms",
+              fontSize: "40px",
+              lineHeight: "1.5",
+              letterSpacing: "0.02em",
+              fontFamily: "Anton",
+              fontWeight: "normal",
+            }}
           >
             Empowering innovation with cutting-edge tools and platforms for unmatched performance.
           </h3>
         </div>
 
         {/* Right Column */}
-        <div className="space-y-6 text-white flex flex-col">
+        <div className="max-w-[500px] space-y-8 text-[15px] text-white/80 flex flex-col justify-start pt-[122px] font-extralight font-['Inter']">
           <p
-            className={`text-lg transition-all duration-700 transform ${
+            className={`transition-all duration-700 transform ${
               isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-16"
             }`}
             style={{ transitionDelay: "300ms" }}
@@ -76,10 +80,13 @@ export default function TechTools() {
             precision in every project.
           </p>
           <p
-            className={`text-lg transition-all duration-700 transform ${
+            className={`transition-all duration-700 transform ${
               isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-16"
             }`}
-            style={{ transitionDelay: "450ms" }}
+            style={{
+              transitionDelay: "450ms",
+              paddingTop: "4px",
+            }}
           >
             We believe in building from the ground up, leveraging modern frameworks and custom solutions to tackle
             complex challenges. Our integrated approach ensures that every tool in our arsenal contributes to creating a
@@ -88,21 +95,19 @@ export default function TechTools() {
 
           <Link
             href="/hardware"
-  className={`inline-flex items-center group transition-all duration-700 transform mt-6 ${
-    isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-16"
-  }`}
-  style={{ transitionDelay: "600ms" }}
->
-  <span className="relative font-medium text-lg mr-2">
-    <span className="relative z-10">Explore Our Tech Stack</span>
-    {/* Animated Underline */}
-    <span
-      className="absolute left-0 bottom-0 w-full h-[2px] bg-white transform scale-x-0 origin-left transition-transform duration-300 group-hover:scale-x-100"
-    />
-  </span>
-  <span className="w-8 h-8 border border-white rounded-full flex items-center justify-center transition-colors group-hover:bg-white group-hover:text-black ml-2">
-    <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" />
-  </span>
+            className={`inline-flex items-center group transition-all duration-700 transform mt-6 ${
+              isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-16"
+            }`}
+            style={{ transitionDelay: "600ms" }}
+          >
+            <span className="relative font-medium text-lg mr-2" style={{ fontFamily: "Chakra Petch, sans-serif" }}>
+              <span className="relative z-10">Explore Our Tech Stack</span>
+              {/* Animated Underline */}
+              <span className="absolute left-0 bottom-0 w-full h-[2px] bg-white transform scale-x-0 origin-left transition-transform duration-300 group-hover:scale-x-100" />
+            </span>
+            <span className="w-6 h-6 border border-white rounded-full flex items-center justify-center transition-colors group-hover:bg-white group-hover:text-black ml-2">
+              <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" />
+            </span>
           </Link>
         </div>
       </div>

@@ -1,16 +1,17 @@
-"use client";
+"use client"
 
-import React, { useState } from 'react';
-import Image from 'next/image';
-import Link from 'next/link';
+import type React from "react"
+import { useState } from "react"
+import Image from "next/image"
+import Link from "next/link"
 
 interface TestimonialBlockProps {
-  backgroundImage: string;
-  logoImage: string;
-  title: string;
-  description: string;
-  readMoreLink: string;
-  isLast?: boolean;
+  backgroundImage: string
+  logoImage: string
+  title: string
+  description: string
+  readMoreLink: string
+  isLast?: boolean
 }
 
 const TestimonialBlock: React.FC<TestimonialBlockProps> = ({
@@ -21,24 +22,24 @@ const TestimonialBlock: React.FC<TestimonialBlockProps> = ({
   readMoreLink,
   isLast = false,
 }) => {
-  const [isHovered, setIsHovered] = useState(false);
+  const [isHovered, setIsHovered] = useState(false)
 
   const imageStyle = {
     opacity: isHovered ? 0 : 1,
-    transition: 'opacity 0.5s ease-out',
-  };
+    transition: "opacity 0.5s ease-out",
+  }
 
   const contentContainerStyle = {
-    backgroundColor: '#eaeaea',
+    backgroundColor: "#eaeaea",
     opacity: isHovered ? 1 : 0,
-    visibility: isHovered ? 'visible' : 'hidden',
-    transition: 'opacity 0.5s ease-out, visibility 0.5s ease-out',
-  };
+    visibility: isHovered ? "visible" : "hidden",
+    transition: "opacity 0.5s ease-out, visibility 0.5s ease-out",
+  }
 
   return (
     <li
       className={`relative w-full overflow-hidden border-t border-b border-t-[#505051] border-b-[#505051]
-        lg:w-[32.9%] ${!isLast ? 'lg:border-r border-r-[#505051]' : ''} lg:border-t-0 lg:border-b-0
+        lg:w-[32.9%] ${!isLast ? "lg:border-r border-r-[#505051]" : ""} lg:border-t-0 lg:border-b-0
         lg:aspect-square`}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
@@ -47,7 +48,7 @@ const TestimonialBlock: React.FC<TestimonialBlockProps> = ({
         {/* Mobile view */}
         <div className="block lg:hidden pt-4 px-4">
           <Image
-            src={backgroundImage}
+            src={backgroundImage || "/placeholder.svg"}
             alt={title}
             width={800}
             height={600}
@@ -59,7 +60,7 @@ const TestimonialBlock: React.FC<TestimonialBlockProps> = ({
         <div className="hidden lg:block absolute inset-0">
           <Image
             className="w-full h-full object-cover p-0 z-0"
-            src={backgroundImage}
+            src={backgroundImage || "/placeholder.svg"}
             alt={title}
             width={800}
             height={600}
@@ -76,38 +77,61 @@ const TestimonialBlock: React.FC<TestimonialBlockProps> = ({
         >
           <Image
             className="mb-6 lg:mb-4 lg:min-h-[80px] lg:object-scale-down lg:object-left mx-auto lg:mx-0"
-            src={logoImage}
+            src={logoImage || "/placeholder.svg"}
             alt={`${title} Logo`}
             width={200}
             height={80}
           />
-          <p className="text-base leading-relaxed text-black">{description}</p>
-          <span className="arrow-link arrow-link--black block mt-10 text-xs uppercase tracking-wider leading-none relative transition-colors duration-250 ease-in-out hover:text-blue-600 mx-auto lg:mx-0">
+          <p className="text-base leading-relaxed text-black" style={{ fontFamily: "Pontano Sans, sans-serif" }}>
+            {description}
+          </p>
+          <span
+            className="arrow-link arrow-link--black block mt-10 text-xs uppercase tracking-wider leading-none relative transition-colors duration-250 ease-in-out hover:text-blue-600 mx-auto lg:mx-0"
+            style={{ fontFamily: "Pontano Sans, sans-serif" }}
+          >
             Read More
           </span>
         </div>
       </Link>
     </li>
-  );
-};
+  )
+}
 
 const Testimonials: React.FC = () => {
   return (
     <section className="bg-[#eaeaea] text-black border-t border-b border-black py-16">
       {/* Header */}
-      <div className="max-w-6xl mx-auto px-6 mb-12">
-        <h2 className="text-lg md:text-xl tracking-widest text-black mb-2">
-          TECH. TOOLS. SOLUTIONS.
-        </h2>
-        <p className="text-2xl md:text-3xl font-medium text-black leading-snug max-w-3xl">
-          Our integrated suite of software, hardware, and services empowers businesses to operate
-          smarter and grow faster.
-        </p>
-      </div>
+      <div className="w-full px-6 md:px-12 xl:px-24 max-w-[1440px] mx-auto mb-12">
+  <h2
+    className="text-black mb-2"
+    style={{
+      fontSize: "18px",
+      fontFamily: "Pontano Sans, sans-serif",
+      fontWeight: "600",
+      letterSpacing: "0.1em",
+      textTransform: "uppercase",
+    }}
+  >
+    TECH. TOOLS. SOLUTIONS.
+  </h2>
+  <p
+    className="text-black leading-snug"
+    style={{
+      fontFamily: "Pontano Sans, sans-serif",
+      fontSize: "40px",
+      lineHeight: "1.5",
+      fontWeight: "500",
+    }}
+  >
+    Our integrated suite of software, hardware, and services empowers businesses to operate smarter and grow
+    faster.
+  </p>
+</div>
+
 
       {/* Testimonials */}
       <div className="max-w-7xl mx-auto px-4 lg:px-6">
-        <ul className="flex flex-wrap justify-between gap-y-8" style={{ listStyle: 'none', padding: 0, margin: 0 }}>
+        <ul className="flex flex-wrap justify-between gap-y-8" style={{ listStyle: "none", padding: 0, margin: 0 }}>
           <TestimonialBlock
             backgroundImage="https://shield.ai/wp-content/uploads/2025/03/company-1b.jpg"
             logoImage="https://shield.ai/wp-content/uploads/2025/03/darpa.svg"
@@ -126,14 +150,14 @@ const Testimonials: React.FC = () => {
             backgroundImage="https://shield.ai/wp-content/uploads/2025/03/company-3b.jpg"
             logoImage="https://shield.ai/wp-content/uploads/2025/03/kratos.svg"
             title="Kratos Partnership"
-            description="Shield AI conducted dual-ship autonomy tests using Kratos’ MQM-178 Firejet drones."
+            description="Shield AI conducted dual-ship autonomy tests using Kratos' MQM-178 Firejet drones."
             readMoreLink="https://shield.ai/autonomy-for-the-world-mqm-178-firejet/"
             isLast={true}
           />
         </ul>
       </div>
     </section>
-  );
-};
+  )
+}
 
-export default Testimonials;
+export default Testimonials

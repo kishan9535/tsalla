@@ -2,6 +2,7 @@ import HeroSection from "@/components/HeroSection"
 import CommitmentSection from "@/components/CommitmentSection"
 import TechTools from "@/components/TechTools"
 import Testimonials from "@/components/Testimonials"
+import Testimonials1 from "@/components/Testimonials1"
 import Newsletter from "@/components/Newsletter"
 import PageWrapper from "@/components/PageWrapper"
 
@@ -10,8 +11,9 @@ export default function HomePage() {
     <PageWrapper hasHero={true}>
       <HeroSection />
       <CommitmentSection />
-      <TechTools />
       <Testimonials />
+      <TechTools />
+       <Testimonials1 />
       <Newsletter />
     </PageWrapper>
   )
