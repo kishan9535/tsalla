@@ -84,7 +84,7 @@ const navigationItems = [
   { name: "AI PILOT", href: "/roadrunner" },
   { name: "SPACE SYSTEMS", href: "/hardware" },
   { name: "UNMANNED SYSTEMS", href: "/mission" },
-  
+
   { name: "JOIN THE MISSION", href: "/careers" },
 ]
 
@@ -156,12 +156,11 @@ export default function Navbar() {
         `}
       >
         <div className="w-full">
-         <div className="flex items-center justify-between h-20 border-b border-white/100 px-4 sm:px-6">
-
+          <div className="flex items-center justify-between h-20 border-b border-white/100 px-4 sm:px-6">
             {/* Logo */}
             <Link href="/" className="flex items-center z-50">
               <Image
-                src="/tsalla_web.svg"
+                src="/tsalla_logo2.svg"
                 alt="Tsalla Aerospace"
                 width={260}
                 height={70}

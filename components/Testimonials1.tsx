@@ -105,7 +105,7 @@ const TestimonialSlider = () => {
     <div className="w-full px-6 md:px-12 xl:px-24 max-w-[1440px] mx-auto py-16">
   {/* Heading */}
   <div className="text-left mb-10">
-<p className="text-gray-400 uppercase tracking-widest mb-6 font-sans text-2xl">
+<p className="text-gray-400 uppercase tracking-widest mb-6 font-sans text-2xl font-light">
   TESTIMONIALS
 </p>
 <h2
