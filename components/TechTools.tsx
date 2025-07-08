@@ -42,14 +42,14 @@ export default function TechTools() {
       <div className="relative z-10 max-w-7xl w-full px-6 grid md:grid-cols-2 gap-12 items-center">
         {/* Left Column */}
         <div className="flex flex-col">
-          <h2
-            className={`text-white/60 mb-4 uppercase tracking-widest transition-all duration-700 transform text-sm font-semibold ${
-              isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-16"
-            }`}
-            style={{ transitionDelay: "0ms" }}
-          >
-            OUR TECHNOLOGY
-          </h2>
+        <h2
+  className={`text-white/60 mb-4 uppercase tracking-widest transition-all duration-700 transform font-sans text-2xl font-light ${
+    isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-16"
+  }`}
+  style={{ transitionDelay: "0ms" }}
+>
+  OUR TECHNOLOGY
+</h2>
           <h3
             className={`text-white/70 mb-6 transition-all duration-700 transform font-mono ${
               isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-16"

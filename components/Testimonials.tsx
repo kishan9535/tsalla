@@ -103,17 +103,15 @@ const Testimonials: React.FC = () => {
       {/* Header */}
       <div className="w-full px-6 md:px-12 xl:px-24 max-w-[1440px] mx-auto mb-12">
   <h2
-    className="text-black mb-2"
-    style={{
-      fontSize: "18px",
-      fontFamily: "Pontano Sans, sans-serif",
-      fontWeight: "600",
-      letterSpacing: "0.1em",
-      textTransform: "uppercase",
-    }}
-  >
-    TECH. TOOLS. SOLUTIONS.
-  </h2>
+  className="text-black mb-2 font-sans text-2xl"
+  style={{
+    fontWeight: "350",
+    letterSpacing: "0.1em",
+    textTransform: "uppercase",
+  }}
+>
+  TECH. TOOLS. SOLUTIONS.
+</h2>
   <p
     className="text-black leading-snug"
     style={{
@@ -130,7 +128,7 @@ const Testimonials: React.FC = () => {
 
 
       {/* Testimonials */}
-      <div className="max-w-7xl mx-auto px-4 lg:px-6">
+      <div className="max-w-7xl mx-auto px-4 lg:px-4">
         <ul className="flex flex-wrap justify-between gap-y-8" style={{ listStyle: "none", padding: 0, margin: 0 }}>
           <TestimonialBlock
             backgroundImage="https://shield.ai/wp-content/uploads/2025/03/company-1b.jpg"
